@@ -18,24 +18,26 @@ export const restaurant = {
   currency: "₹",
 
   // --- Contact -------------------------------------------------
-  phoneDisplay: "+91 98765 43210",
+  phoneDisplay: "+91 72095 38634",
   // Used for tel: links — digits only, with country code.
-  phone: "919876543210",
+  phone: "917209538634",
   // Used for WhatsApp (wa.me) — country code + number, NO plus / spaces.
-  whatsapp: "919876543210",
+  whatsapp: "917209538634",
   email: "hello@pizzawedsburger.com",
 
   // --- Location ------------------------------------------------
   address: {
-    line1: "Shop 12, Flavour Street",
-    line2: "Connaught Place",
-    city: "New Delhi",
-    pincode: "110001",
+    line1: "Near Sitla Mandir, Rajendra Nagar",
+    line2: "Sakchi",
+    city: "Jamshedpur",
+    state: "Jharkhand",
+    pincode: "832110",
   },
-  // Google Maps embed src (replace with your own place).
+  // Google Maps embed src (points at the restaurant in Sakchi).
   mapEmbed:
-    "https://www.google.com/maps?q=Connaught+Place+New+Delhi&output=embed",
-  mapLink: "https://maps.google.com/?q=Connaught+Place+New+Delhi",
+    "https://www.google.com/maps?q=Pizza+Weds+Burger+Rajendra+Nagar+Sakchi+Jamshedpur&output=embed",
+  mapLink:
+    "https://maps.google.com/?q=Pizza+Weds+Burger+Rajendra+Nagar+Sakchi+Jamshedpur",
 
   // --- Hours ---------------------------------------------------
   hours: [
@@ -53,10 +55,37 @@ export const restaurant = {
 
   // --- Highlight stats (shown in the About section) -----------
   stats: [
-    { value: "60K+", label: "Orders served" },
-    { value: "4.8★", label: "Avg. rating" },
-    { value: "25 min", label: "Avg. delivery" },
-    { value: "100%", label: "Fresh dough daily" },
+    { value: "4.8★", label: "Google rating" },
+    { value: "₹200–400", label: "For two (approx.)" },
+    { value: "Quick", label: "Bite & service" },
+    { value: "100%", label: "Made to order" },
+  ],
+
+  // --- Good to know (service options & amenities, from Google) -
+  goodToKnow: [
+    {
+      title: "Service options",
+      items: [
+        "Dine-in",
+        "Takeaway",
+        "Delivery",
+        "No-contact delivery",
+        "Kerbside pickup",
+      ],
+    },
+    {
+      title: "Dining",
+      items: [
+        "Great for solo dining",
+        "Good for groups",
+        "Good for kids",
+        "Casual & cosy",
+      ],
+    },
+    {
+      title: "Good to know",
+      items: ["Quick bite", "Free parking lot"],
+    },
   ],
 } as const;
 
@@ -71,5 +100,5 @@ export function whatsappLink(message: string) {
 
 export function fullAddress() {
   const a = restaurant.address;
-  return `${a.line1}, ${a.line2}, ${a.city} ${a.pincode}`;
+  return `${a.line1}, ${a.line2}, ${a.city}, ${a.state} ${a.pincode}`;
 }

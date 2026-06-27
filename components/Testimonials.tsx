@@ -1,9 +1,18 @@
 "use client";
 
-import Image from "next/image";
 import { Star, Quote } from "lucide-react";
 import { testimonials } from "@/data/testimonials";
 import { Reveal, SectionHeading } from "./ui";
+
+/** First letters of the reviewer's name, for the avatar badge. */
+function initials(name: string) {
+  return name
+    .split(" ")
+    .filter(Boolean)
+    .slice(0, 2)
+    .map((w) => w[0]?.toUpperCase())
+    .join("");
+}
 
 export default function Testimonials() {
   return (
@@ -13,7 +22,7 @@ export default function Testimonials() {
           eyebrow="Word on the street"
           title="Loved by"
           highlight="the hungry"
-          subtitle="We let the food do the talking — but our regulars have a lot to say too."
+          subtitle="Real reviews from our guests on Google — Sakchi's favourite for pizza, burgers, sandwiches & more."
         />
 
         <div className="mt-12 grid grid-cols-1 gap-6 md:grid-cols-2 xl:grid-cols-4">
@@ -34,13 +43,12 @@ export default function Testimonials() {
                   “{t.quote}”
                 </blockquote>
                 <figcaption className="mt-6 flex items-center gap-3">
-                  <Image
-                    src={t.avatar}
-                    alt={t.name}
-                    width={44}
-                    height={44}
-                    className="h-11 w-11 rounded-full object-cover"
-                  />
+                  <span
+                    aria-hidden
+                    className="grid h-11 w-11 shrink-0 place-items-center rounded-full bg-gradient-to-br from-flame to-chili text-sm font-bold text-cream"
+                  >
+                    {initials(t.name)}
+                  </span>
                   <div>
                     <div className="text-sm font-semibold text-cream">
                       {t.name}

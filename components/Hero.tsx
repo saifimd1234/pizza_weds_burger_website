@@ -196,7 +196,7 @@ export default function Hero() {
               ))}
             </div>
             <span>
-              <strong className="text-cream">4.8/5</strong> from 12,000+ hungry fans
+              <strong className="text-cream">4.8/5</strong> — loved by Sakchi foodies
             </span>
           </motion.div>
         </motion.div>

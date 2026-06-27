@@ -85,6 +85,7 @@ export default function RootLayout({
       "@type": "PostalAddress",
       streetAddress: `${restaurant.address.line1}, ${restaurant.address.line2}`,
       addressLocality: restaurant.address.city,
+      addressRegion: restaurant.address.state,
       postalCode: restaurant.address.pincode,
       addressCountry: "IN",
     },

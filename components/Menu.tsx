@@ -1,9 +1,9 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import { AnimatePresence, motion } from "framer-motion";
-import { Plus, Star } from "lucide-react";
+import { ChevronLeft, ChevronRight, Plus, Star } from "lucide-react";
 import { menu, type MenuItem } from "@/data/menu";
 import { restaurant } from "@/data/restaurant";
 import { useCart } from "@/lib/cart";
@@ -75,6 +75,32 @@ export default function Menu() {
   const [active, setActive] = useState(menu[0].id);
   const category = menu.find((c) => c.id === active) ?? menu[0];
 
+  const tabsRef = useRef<HTMLDivElement>(null);
+  const [canLeft, setCanLeft] = useState(false);
+  const [canRight, setCanRight] = useState(false);
+
+  const updateArrows = () => {
+    const el = tabsRef.current;
+    if (!el) return;
+    setCanLeft(el.scrollLeft > 4);
+    setCanRight(el.scrollLeft + el.clientWidth < el.scrollWidth - 4);
+  };
+
+  useEffect(() => {
+    updateArrows();
+    const el = tabsRef.current;
+    if (!el) return;
+    el.addEventListener("scroll", updateArrows, { passive: true });
+    window.addEventListener("resize", updateArrows);
+    return () => {
+      el.removeEventListener("scroll", updateArrows);
+      window.removeEventListener("resize", updateArrows);
+    };
+  }, []);
+
+  const scrollTabs = (dir: -1 | 1) =>
+    tabsRef.current?.scrollBy({ left: dir * 280, behavior: "smooth" });
+
   return (
     <section id="menu" className="relative bg-night py-24 sm:py-32">
       <div className="container-pwb">
@@ -86,21 +112,64 @@ export default function Menu() {
         />
 
         {/* Tabs */}
-        <div className="no-scrollbar mt-10 flex justify-start gap-3 overflow-x-auto pb-2 sm:justify-center">
-          {menu.map((c) => (
-            <button
-              key={c.id}
-              onClick={() => setActive(c.id)}
-              className={`flex shrink-0 items-center gap-2 rounded-full border px-5 py-2.5 text-sm font-semibold transition-all ${
-                active === c.id
-                  ? "border-flame bg-gradient-to-r from-flame to-chili text-cream shadow-ember"
-                  : "border-white/15 bg-white/5 text-cream/75 hover:border-flame/50"
-              }`}
-            >
-              <span className="text-lg">{c.icon}</span>
-              {c.label}
-            </button>
-          ))}
+        <div className="relative mt-10">
+          {/* edge fades */}
+          <div
+            aria-hidden
+            className={`pointer-events-none absolute inset-y-0 left-0 z-10 w-12 bg-gradient-to-r from-night to-transparent transition-opacity ${
+              canLeft ? "opacity-100" : "opacity-0"
+            }`}
+          />
+          <div
+            aria-hidden
+            className={`pointer-events-none absolute inset-y-0 right-0 z-10 w-12 bg-gradient-to-l from-night to-transparent transition-opacity ${
+              canRight ? "opacity-100" : "opacity-0"
+            }`}
+          />
+
+          {/* left arrow */}
+          <button
+            type="button"
+            onClick={() => scrollTabs(-1)}
+            aria-label="Scroll categories left"
+            className={`absolute left-0 top-1/2 z-20 grid h-10 w-10 -translate-y-1/2 place-items-center rounded-full border border-white/15 bg-night/90 text-cream shadow-soft backdrop-blur transition-all hover:border-flame hover:text-flame ${
+              canLeft ? "opacity-100" : "pointer-events-none opacity-0"
+            }`}
+          >
+            <ChevronLeft className="h-5 w-5" />
+          </button>
+
+          {/* right arrow */}
+          <button
+            type="button"
+            onClick={() => scrollTabs(1)}
+            aria-label="Scroll categories right"
+            className={`absolute right-0 top-1/2 z-20 grid h-10 w-10 -translate-y-1/2 place-items-center rounded-full border border-white/15 bg-night/90 text-cream shadow-soft backdrop-blur transition-all hover:border-flame hover:text-flame ${
+              canRight ? "opacity-100" : "pointer-events-none opacity-0"
+            }`}
+          >
+            <ChevronRight className="h-5 w-5" />
+          </button>
+
+          {/* scrollable strip — centers when it fits, scrolls when it overflows */}
+          <div ref={tabsRef} className="no-scrollbar overflow-x-auto">
+            <div className="mx-auto flex w-max gap-3 px-12 pb-2">
+              {menu.map((c) => (
+                <button
+                  key={c.id}
+                  onClick={() => setActive(c.id)}
+                  className={`flex shrink-0 items-center gap-2 rounded-full border px-5 py-2.5 text-sm font-semibold transition-all ${
+                    active === c.id
+                      ? "border-flame bg-gradient-to-r from-flame to-chili text-cream shadow-ember"
+                      : "border-white/15 bg-white/5 text-cream/75 hover:border-flame/50"
+                  }`}
+                >
+                  <span className="text-lg">{c.icon}</span>
+                  {c.label}
+                </button>
+              ))}
+            </div>
+          </div>
         </div>
 
         <Reveal>

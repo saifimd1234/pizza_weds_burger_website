@@ -1,6 +1,6 @@
 "use client";
 
-import { MapPin, Phone, Mail, Clock, ShoppingBag, MessageCircle } from "lucide-react";
+import { MapPin, Phone, Mail, Clock, ShoppingBag, MessageCircle, Check } from "lucide-react";
 import { restaurant, whatsappLink, fullAddress } from "@/data/restaurant";
 import { useCart } from "@/lib/cart";
 import { Reveal, SectionHeading } from "./ui";
@@ -135,6 +135,33 @@ export default function Contact() {
             </Reveal>
           </div>
         </div>
+
+        {/* Good to know — service options & amenities (from Google) */}
+        <Reveal delay={0.2}>
+          <div className="card mt-6 p-6 sm:p-8">
+            <h3 className="font-display text-xl uppercase">Good to know</h3>
+            <div className="mt-5 grid gap-6 sm:grid-cols-3">
+              {restaurant.goodToKnow.map((group) => (
+                <div key={group.title}>
+                  <div className="text-xs uppercase tracking-wide text-cream/50">
+                    {group.title}
+                  </div>
+                  <ul className="mt-3 space-y-2">
+                    {group.items.map((item) => (
+                      <li
+                        key={item}
+                        className="flex items-center gap-2 text-sm text-cream/85"
+                      >
+                        <Check className="h-4 w-4 shrink-0 text-flame" />
+                        {item}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              ))}
+            </div>
+          </div>
+        </Reveal>
       </div>
     </section>
   );

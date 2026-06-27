@@ -1,47 +1,64 @@
-/** Customer reviews — edit freely. */
+/** Customer reviews — real Google Maps reviews. Edit freely. */
 export type Testimonial = {
   name: string;
   role: string;
   quote: string;
   rating: number;
-  avatar: string;
 };
 
 export const testimonials: Testimonial[] = [
   {
-    name: "Aisha Khan",
-    role: "Food blogger",
+    name: "Abhilasha Chopra",
+    role: "Local Guide · Google review",
     quote:
-      "The Inferno Pepperoni is unreal — that chili honey drizzle had me ordering a second one before I finished the first.",
+      "One of the best places serving the best pizza. The BBQ chicken pizza is the best as always, and the Russian chicken is also good.",
     rating: 5,
-    avatar:
-      "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&fit=crop&w=200&q=80",
   },
   {
-    name: "Rohan Mehta",
-    role: "Regular since day one",
+    name: "Simran Pandey",
+    role: "Google review",
     quote:
-      "Pizza AND burgers under one roof, both done right. The OG Smash is the best in the city, no debate.",
+      "Excellent food quality and good staff service. Thank you chef for the pizza, burger & fries — it tastes heavenly! 🌸",
     rating: 5,
-    avatar:
-      "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=200&q=80",
   },
   {
-    name: "Sara D'Souza",
-    role: "Spice chaser",
+    name: "The Real",
+    role: "Local Guide · Google review",
     quote:
-      "Peri-Peri Chicken Burger at level 3 spice is a religious experience. Order the mint lemonade to survive it.",
+      "Best restaurant in Sakchi for pizza, burger and sandwich lovers. Great value for the price.",
     rating: 5,
-    avatar:
-      "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=200&q=80",
   },
   {
-    name: "Vikram Singh",
-    role: "Office lunch hero",
+    name: "Md Tamsheel Ansari",
+    role: "Google review",
     quote:
-      "Booked a table for 8 over WhatsApp in 30 seconds, food was out fast and piping hot. Faultless.",
+      "A great experience to be here. The pizza, burgers and sandwiches are awesome in taste.",
     rating: 5,
-    avatar:
-      "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=200&q=80",
+  },
+  {
+    name: "Adiba Khan",
+    role: "Google review",
+    quote:
+      "Very tasty food and nice service. The outlet is also very cosy and clean — overall a great experience.",
+    rating: 5,
+  },
+  {
+    name: "Tashfin Raza",
+    role: "Google review",
+    quote:
+      "A highly recommended place — fast service and great food, especially the pizzas.",
+    rating: 5,
+  },
+  {
+    name: "Sayed Md Majid Hussain",
+    role: "Local Guide · Google review",
+    quote: "Amazing taste at an affordable price. Must visit!",
+    rating: 5,
+  },
+  {
+    name: "Wasi Ahmad",
+    role: "Google review",
+    quote: "The pizza is very laziz, and the service was very good too.",
+    rating: 5,
   },
 ];
