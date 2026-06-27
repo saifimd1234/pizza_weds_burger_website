@@ -1,0 +1,97 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    color-scheme: dark;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  /* Lenis smooth-scroll: disable native smoothing while Lenis is active */
+  html.lenis,
+  html.lenis body {
+    height: auto;
+  }
+  .lenis.lenis-smooth {
+    scroll-behavior: auto !important;
+  }
+  .lenis.lenis-stopped {
+    overflow: hidden;
+  }
+
+  body {
+    @apply bg-charcoal text-cream font-body antialiased;
+    overflow-x: hidden;
+  }
+
+  ::selection {
+    @apply bg-chili text-cream;
+  }
+
+  /* Custom scrollbar */
+  ::-webkit-scrollbar {
+    width: 10px;
+  }
+  ::-webkit-scrollbar-track {
+    background: #120c0a;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: linear-gradient(#ff7a18, #e2391d);
+    border-radius: 999px;
+  }
+}
+
+@layer components {
+  .container-pwb {
+    @apply mx-auto w-full max-w-7xl px-5 sm:px-8;
+  }
+
+  .text-gradient {
+    @apply bg-gradient-to-r from-cheese via-flame to-chili bg-clip-text text-transparent;
+  }
+
+  .eyebrow {
+    @apply inline-flex items-center gap-2 rounded-full border border-flame/30 bg-flame/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.25em] text-flame;
+  }
+
+  .glass {
+    @apply border border-white/10 bg-white/[0.04] backdrop-blur-xl;
+  }
+
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-full px-6 py-3 text-sm font-bold uppercase tracking-wide transition-all duration-300 will-change-transform;
+  }
+  .btn-primary {
+    @apply btn bg-gradient-to-r from-flame to-chili text-cream shadow-ember hover:-translate-y-0.5 hover:shadow-gold;
+  }
+  .btn-ghost {
+    @apply btn border border-white/20 bg-white/5 text-cream hover:border-flame hover:bg-flame/10;
+  }
+  .btn-whatsapp {
+    @apply btn bg-[#25D366] text-[#04230f] hover:-translate-y-0.5 hover:shadow-[0_18px_40px_-18px_rgba(37,211,102,0.7)];
+  }
+
+  .card {
+    @apply relative overflow-hidden rounded-3xl border border-white/10 bg-night/80;
+  }
+}
+
+@layer utilities {
+  .heat-text-shadow {
+    text-shadow: 0 0 40px rgba(255, 122, 24, 0.35);
+  }
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  .perspective {
+    perspective: 1200px;
+  }
+}
