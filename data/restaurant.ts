@@ -27,11 +27,12 @@ export const restaurant = {
 
   // --- Location ------------------------------------------------
   address: {
-    line1: "Near Sitla Mandir, Rajendra Nagar",
+    // Matches the FSSAI registration + municipal trade licence (Meta business verification checks this).
+    line1: "Holding No. 01, Rajendra Nagar, Near Sitla Mandir",
     line2: "Sakchi",
     city: "Jamshedpur",
     state: "Jharkhand",
-    pincode: "832110",
+    pincode: "831001",
   },
   // Google Maps embed src (points at the restaurant in Sakchi).
   mapEmbed:

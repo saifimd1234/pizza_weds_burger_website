@@ -32,3 +32,11 @@ yarn-error.log*
 next-env.d.ts
 
 .vercel
+
+# hyperframes video outputs
+videos/*/renders/
+videos/*/snapshots/
+videos/*/capture/
+
+# business registration documents (licences, IDs) - never commit, repo is public
+/business-docs/
