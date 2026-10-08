@@ -22,7 +22,7 @@ export const restaurant = {
   // Used for tel: links — digits only, with country code.
   phone: "917209538634",
   // Used for WhatsApp (wa.me) — country code + number, NO plus / spaces.
-  whatsapp: "917209538634",
+  whatsapp: "918651650251",
   email: "hello@pizzawedsburger.com",
 
   // --- Location ------------------------------------------------
